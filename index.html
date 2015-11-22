@@ -6,8 +6,28 @@
 		<script type="text/javascript" src="d3-master/d3.js"></script>
 	</head>
 	<body>
-		<script type="text/javascript"></script>
-			// D3 code will go in here
+		<script type="text/javascript">
+			
+			var dataset = [ 5, 10, 15, 20, 25 ];
+
+			d3.select("body")
+			.selectAll("p")
+			.data(dataset).enter()
+			.append("p")
+			.text(function(d) { return "I can count up to " + d; })
+			.style("color", function(d) {
+				if(d > 15){
+					return("black");
+				} else {
+					return("red");
+				}
+			});
+
+		</script>
+		
+
+
+		<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
 		</script>
 	</body>
 </html>
