@@ -4,13 +4,51 @@
 		<meta charset="utf-8">
 		<title>D3 Test</title>
 		<script type="text/javascript" src="d3-master/d3.js"></script>
+		<style type="text/css">
+
+			div.bar {
+				display: inline-block;
+				width: 20px;
+				height: 75px;
+				background-color: teal;
+				margin-right: 5px;
+			}
+		</style>
 	</head>
 	<body>
 		<script type="text/javascript">
 			
 			var dataset = [ 5, 10, 15, 20, 25 ];
 
-			d3.select("body")
+			d3.select("body").selectAll("div")
+			.data(dataset)
+			.enter()
+			.append("div")
+			.attr("class", "bar")
+			.style("height", function(d) {
+				var barHeight = d * 5;
+				return barHeight + "px";
+			})
+			.style("background-color", function(d) {
+				if(d < 15){
+					return "green";
+				} else {
+					return "black";
+				}
+			});
+
+		</script>
+
+<!-- Live reload script below this -->
+
+		<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+		</script>
+	</body>
+</html>
+
+
+
+<!-- d3.select("body")
 			.selectAll("p")
 			.data(dataset).enter()
 			.append("p")
@@ -22,18 +60,4 @@
 					return("red");
 				}
 			});
-
-		</script>
-
-		<div style="display: inline-block;
-					width: 20px;
-					height: 75px;
-					background-color: teal;">
-		</div>
-		
-
-
-		<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
-		</script>
-	</body>
-</html>
+ -->
